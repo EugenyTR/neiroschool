@@ -1,0 +1,1239 @@
+/* css/style.css — ПЕРВАЯ СТРОКА, без BOM! */
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+    --color-primary:#1A5390;
+    --color-bg:#FFFFFF;
+    --color-text:#666666;
+    --color-text-dark:#000000;
+    --color-border:#E0E0E0;
+    --color-hover:#F5F5F5;
+}
+
+body{
+    font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:#F8F9FA;
+    min-height:100vh;
+    color:var(--color-text);
+}
+
+/* === HEADER === */
+.header{
+    background:var(--color-bg);
+    padding:20px 30px;
+    border-bottom:2px solid var(--color-primary);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-content{
+    max-width:1600px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.header h1{
+    color:var(--color-primary);
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.5px;
+}
+
+.header-info{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.class-badge{
+    background:var(--color-primary);
+    color:var(--color-bg);
+    padding:6px 14px;
+    border-radius:4px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.subject-select{
+    padding:8px 16px;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    font-size:14px;
+    color:var(--color-text-dark);
+    background:var(--color-bg);
+    cursor:pointer;
+}
+
+.subject-select:focus{
+    outline:none;
+    border-color:var(--color-primary);
+}
+
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.user-name{
+    color:var(--color-text-dark);
+    font-weight:500;
+    font-size:14px;
+}
+
+.role-badge{
+    padding:4px 10px;
+    border-radius:3px;
+    font-size:11px;
+    font-weight:600;
+    text-transform:uppercase;
+    background:var(--color-hover);
+    color:var(--color-text);
+    border:1px solid var(--color-border);
+}
+
+/* === BUTTONS === */
+.btn{
+    padding:8px 16px;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:500;
+    font-size:13px;
+    transition:all 0.2s;
+    background:var(--color-bg);
+    color:var(--color-text-dark);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.btn:hover{
+    background:var(--color-hover);
+    border-color:var(--color-primary);
+}
+
+.btn-primary{
+    background:var(--color-primary);
+    color:var(--color-bg);
+    border-color:var(--color-primary);
+}
+
+.btn-primary:hover{
+    background:#154275;
+    border-color:#154275;
+}
+
+.btn-icon{
+    padding:6px 10px;
+    font-size:14px;
+}
+
+/* === CONTROLS === */
+.controls{
+    max-width:1600px;
+    margin:0 auto;
+    padding:20px 30px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.controls select{
+    padding:10px 16px;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    min-width:180px;
+    font-size:14px;
+    color:var(--color-text-dark);
+    background:var(--color-bg);
+}
+
+.controls select:focus{
+    outline:none;
+    border-color:var(--color-primary);
+}
+
+/* === TABLE CONTAINER === */
+.journal-container{
+    max-width:1600px;
+    margin:0 auto;
+    padding:0 30px 30px;
+}
+
+.table-wrapper{
+    background:var(--color-bg);
+    border:1px solid var(--color-border);
+    border-radius:6px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05);
+}
+
+.journal-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1200px;
+}
+
+/* === TABLE HEADERS === */
+.journal-table thead th {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    min-width: 50px;
+}
+
+.journal-table thead th.header-sticky {
+    z-index: 20;
+    background: var(--color-primary);
+}
+
+.journal-table thead th.lesson-info-header {
+    background: #F8F9FA !important;
+    color: var(--color-text-dark) !important;
+    font-weight: 500;
+    font-size: 11px;
+    border-bottom: 2px solid var(--color-border) !important;
+    border-top: 1px solid var(--color-border) !important;
+}
+
+/* Каждая колонка урока — отдельный th */
+.journal-table thead th.lesson-header {
+    min-width: 55px;
+    max-width: 55px;
+    padding: 8px 4px;
+    font-size: 13px;
+}
+
+/* Дата урока */
+.journal-table thead th.lesson-date {
+    min-width: 55px;
+    max-width: 55px;
+    padding: 6px 4px;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--color-text);
+    background: #F8F9FA !important;
+}
+
+/* Тема урока (всплывающая подсказка) */
+.journal-table thead th[title] {
+    cursor: help;
+}
+
+.journal-table thead th.average-header {
+    background: #154275 !important;
+    min-width: 80px;
+    z-index: 15;
+}
+
+/* Sub-header for lesson info */
+.lesson-info-header{
+    background:#F8F9FA !important;
+    color:var(--color-text-dark) !important;
+    font-weight:500;
+    font-size:11px;
+    border-bottom:2px solid var(--color-border) !important;
+}
+
+/* Стили для тем уроков */
+.lesson-topic-cell {
+    min-width: 150px;
+    max-width: 150px;
+    padding: 8px 4px;
+    font-size: 10px;
+    text-align: center;
+    border-left: 1px solid #E0E0E0;
+    border-right: 1px solid #E0E0E0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #666;
+    line-height: 1.3;
+}
+
+.lesson-date-cell {
+    min-width: 55px;
+    max-width: 55px;
+    padding: 6px 4px;
+    font-size: 10px;
+    font-weight: 400;
+    color: #999;
+    text-align: center;
+    border-left: 1px solid #E0E0E0;
+    border-right: 1px solid #E0E0E0;
+}
+
+/* === TABLE BODY === */
+.journal-table tbody td{
+    padding:10px 8px;
+    text-align:center;
+    border:1px solid var(--color-border);
+    font-size:13px;
+    color:var(--color-text);
+}
+
+.journal-table tbody tr:hover{
+    background:var(--color-hover);
+}
+
+.journal-table tbody tr.dragging{
+    opacity:0.5;
+    background:#E8F0FE !important;
+}
+
+.journal-table tbody tr.drag-over{
+    border-top:2px solid var(--color-primary);
+}
+
+/* === COLUMN STYLES === */
+.col-drag{
+    width:35px;
+    padding:0 !important;
+}
+
+.col-number{
+    width:40px;
+    font-weight:600;
+    color:var(--color-text);
+}
+
+.col-student{
+    min-width:200px;
+    text-align:left !important;
+    padding-left:12px !important;
+}
+
+.student-name{
+    color:var(--color-text-dark);
+    font-weight:500;
+    font-size:13px;
+}
+
+.student-actions{
+    display:inline-flex;
+    gap:4px;
+    margin-left:10px;
+    opacity:0;
+    transition:opacity 0.2s;
+}
+
+.journal-table tbody tr:hover .student-actions{
+    opacity:1;
+}
+
+/* === ACTION ICONS (Minimalist B/W) === */
+.btn-edit,
+.btn-delete,
+.btn-add{
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px 6px;
+    border-radius:3px;
+    transition:all 0.2s;
+    font-size:14px;
+    color:var(--color-text);
+}
+
+.btn-edit:hover{
+    background:var(--color-primary);
+    color:var(--color-bg);
+}
+
+.btn-delete:hover{
+    background:#000000;
+    color:var(--color-bg);
+}
+
+.btn-add:hover{
+    background:var(--color-primary);
+    color:var(--color-bg);
+}
+
+/* === GRADE CELLS === */
+.grade-cell{
+    cursor:pointer;
+    transition:all 0.2s;
+    min-width:45px;
+    font-weight:500;
+}
+
+.grade-cell:hover{
+    background:#E8F0FE;
+}
+
+.grade-cell.has-grade{
+    color:var(--color-text-dark);
+}
+
+.grade-cell.empty{
+    color:#CCCCCC;
+}
+
+.grade-cell.editable:hover{
+    background:var(--color-primary);
+    color:var(--color-bg);
+}
+
+/* === AVERAGE COLUMN === */
+.average-cell{
+    font-weight:700;
+    color:var(--color-primary);
+    background:#F8F9FA;
+    min-width:70px;
+}
+
+/* === DRAG HANDLE === */
+.drag-handle{
+    cursor:grab;
+    color:var(--color-text);
+    font-size:16px;
+    user-select:none;
+    text-align:center;
+}
+
+.drag-handle:active{
+    cursor:grabbing;
+}
+
+.drag-handle:hover{
+    color:var(--color-primary);
+}
+
+/* === MODAL === */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+}
+
+.modal-content{
+    background:var(--color-bg);
+    margin:10% auto;
+    padding:30px;
+    border-radius:6px;
+    width:90%;
+    max-width:500px;
+    position:relative;
+    border:1px solid var(--color-border);
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-size:24px;
+    cursor:pointer;
+    color:var(--color-text);
+}
+
+.close:hover{
+    color:var(--color-text-dark);
+}
+
+.modal-content h3{
+    color:var(--color-primary);
+    margin-bottom:20px;
+    font-size:18px;
+    font-weight:600;
+}
+
+/* === FORM ELEMENTS === */
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    color:var(--color-text-dark);
+    font-weight:500;
+    font-size:13px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    font-size:14px;
+    color:var(--color-text-dark);
+    background:var(--color-bg);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    outline:none;
+    border-color:var(--color-primary);
+}
+
+/* === NOTIFICATIONS === */
+.notification{
+    position:fixed;
+    top:20px;
+    right:20px;
+    padding:12px 20px;
+    border-radius:4px;
+    color:var(--color-bg);
+    font-weight:500;
+    font-size:13px;
+    z-index:2000;
+    animation:slideIn 0.3s ease;
+}
+
+.notification.success{
+    background:var(--color-primary);
+}
+
+.notification.error{
+    background:#000000;
+}
+
+@keyframes slideIn{
+    from{transform:translateX(100%);opacity:0}
+    to{transform:translateX(0);opacity:1}
+}
+
+/* === LOGIN PAGE === */
+.login-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+    background:#F8F9FA;
+}
+
+.login-box{
+    background:var(--color-bg);
+    padding:40px;
+    border-radius:6px;
+    border:1px solid var(--color-border);
+    width:100%;
+    max-width:400px;
+    text-align:center;
+}
+
+.login-box h1{
+    color:var(--color-primary);
+    margin-bottom:10px;
+    font-size:24px;
+    font-weight:600;
+}
+
+.login-box h2{
+    color:var(--color-text);
+    margin-bottom:30px;
+    font-size:16px;
+    font-weight:400;
+}
+
+.error-message{
+    color:#000000;
+    background:#FFE6E6;
+    padding:10px;
+    border-radius:4px;
+    margin-bottom:20px;
+    font-size:13px;
+}
+
+/* === TEACHER INFO BAR === */
+.teacher-bar{
+    background:#F8F9FA;
+    padding:12px 30px;
+    border-bottom:1px solid var(--color-border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.teacher-name{
+    color:var(--color-text-dark);
+    font-weight:500;
+    font-size:14px;
+}
+
+.quarter-info{
+    color:var(--color-primary);
+    font-weight:600;
+    font-size:14px;
+}
+
+/* === ADD COLUMN BUTTON === */
+.add-column-btn{
+    position:sticky;
+    right:0;
+    background:var(--color-hover);
+    border:1px solid var(--color-border);
+    color:var(--color-primary);
+    cursor:pointer;
+    font-size:18px;
+    padding:10px 15px;
+    transition:all 0.2s;
+}
+
+.add-column-btn:hover{
+    background:var(--color-primary);
+    color:var(--color-bg);
+}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+    .header-content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .controls{
+        flex-direction:column;
+        padding:15px;
+    }
+
+    .controls select,
+    .controls .btn{
+        width:100%;
+    }
+
+    .journal-container{
+        padding:0 15px 15px;
+    }
+
+    .teacher-bar{
+        flex-direction:column;
+        text-align:center;
+        padding:15px;
+    }
+}
+
+/* === SCROLLBAR === */
+.table-wrapper::-webkit-scrollbar{
+    height:8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track{
+    background:#F1F1F1;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb{
+    background:var(--color-primary);
+    border-radius:4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover{
+    background:#154275;
+}
+
+/* Стили для колонок таблицы */
+.col-number {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.col-student {
+    min-width: 200px;
+    text-align: left !important;
+    padding-left: 12px !important;
+}
+
+/* Колонки для баллов (динамические) */
+.grade-cell {
+    cursor: pointer;
+    min-width: 45px;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.grade-cell:hover {
+    background: #E8F0FE;
+}
+
+.grade-cell.has-grade {
+    color: var(--color-text-dark);
+}
+
+.grade-cell.empty {
+    color: #CCCCCC;
+}
+
+.grade-cell.editable:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+/* Средняя колонка */
+.col-average {
+    min-width: 100px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: #F8F9FA;
+    position: sticky;
+    right: 0;
+    z-index: 5;
+}
+
+/* Дата */
+.col-date {
+    min-width: 100px;
+    text-align: center;
+    color: var(--color-text);
+}
+
+/* Тема урока */
+.col-topic {
+    min-width: 250px;
+    text-align: left;
+    color: var(--color-text-dark);
+}
+
+/* Индивидуальное задание */
+.col-task {
+    min-width: 200px;
+    text-align: left;
+    color: var(--color-text);
+}
+
+/* Заголовки */
+.journal-table thead th {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    padding: 12px 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-sticky {
+    z-index: 20 !important;
+}
+
+/* === РЕДАКТИРУЕМЫЕ ЯЧЕЙКИ === */
+.col-date.editable-date,
+.col-topic.editable-topic {
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.col-date.editable-date:hover,
+.col-topic.editable-topic:hover {
+    background: #E8F0FE;
+    color: var(--color-primary);
+}
+
+.col-date.editable-date::after,
+.col-topic.editable-topic::after {
+    content: '✎';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: var(--color-primary);
+}
+
+.col-date.editable-date:hover::after,
+.col-topic.editable-topic:hover::after {
+    opacity: 1;
+}
+
+/* === КОЛОНКИ === */
+.col-date {
+    min-width: 100px;
+    text-align: center;
+    color: var(--color-text);
+    font-size: 12px;
+}
+
+.col-topic {
+    min-width: 250px;
+    text-align: left;
+    color: var(--color-text-dark);
+    font-size: 12px;
+    padding-left: 12px !important;
+}
+
+.col-task {
+    min-width: 200px;
+    text-align: left;
+    color: var(--color-text);
+    font-size: 12px;
+    padding-left: 12px !important;
+}
+
+.col-average {
+    min-width: 100px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: #F8F9FA;
+    font-size: 13px;
+}
+
+/* === MODAL === */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--color-bg);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid var(--color-border);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-text);
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: var(--color-text-dark);
+}
+
+.modal-content h3 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Стили для ячеек с оценками */
+.grade-cell {
+    cursor: pointer;
+    min-width: 45px;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: 500;
+    position: relative;
+}
+
+.grade-cell:hover {
+    background: #E8F0FE;
+}
+
+.grade-cell.has-grade {
+    color: var(--color-text-dark);
+}
+
+.grade-cell.empty {
+    color: #CCCCCC;
+}
+
+.grade-cell.editable:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+/* ✅ Tooltip для комментариев */
+.grade-cell[title] {
+    position: relative;
+}
+
+.grade-cell[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    pointer-events: none;
+}
+
+/* === TWO TABLE SECTIONS === */
+.table-section {
+    margin-bottom: 30px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table-title {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* === TABLE 1: GRADES === */
+.lesson-dates-header th {
+    background: #F8F9FA !important;
+    color: var(--color-text) !important;
+    font-size: 11px;
+    font-weight: 400;
+    border-top: 1px solid var(--color-border) !important;
+}
+
+.lesson-date-cell {
+    min-width: 50px;
+    text-align: center;
+    padding: 8px 4px;
+    border-right: 1px solid var(--color-border);
+}
+
+.grade-cell {
+    cursor: pointer;
+    min-width: 45px;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.grade-cell:hover { background: #E8F0FE; }
+.grade-cell.has-grade { color: var(--color-text-dark); }
+.grade-cell.empty { color: #CCCCCC; }
+.grade-cell.editable:hover { background: var(--color-primary); color: var(--color-bg); }
+
+/* === TABLE 2: LESSONS === */
+#lessonsTable .col-number { width: 50px; text-align: center; font-weight: 600; }
+#lessonsTable .col-date { width: 100px; text-align: center; }
+#lessonsTable .col-topic { min-width: 300px; text-align: left; padding-left: 12px !important; }
+#lessonsTable .col-task { min-width: 200px; text-align: left; padding-left: 12px !important; color: var(--color-text); }
+#lessonsTable .col-actions { width: 60px; text-align: center; }
+
+#lessonsTable .col-topic:hover,
+#lessonsTable .col-task:hover {
+    background: #F8F9FA;
+}
+
+/* === COMMON === */
+.col-drag { width: 35px; padding: 0 !important; }
+.col-number { width: 40px; text-align: center; font-weight: 600; color: var(--color-text); }
+.col-student { min-width: 200px; text-align: left !important; padding-left: 12px !important; }
+.col-average { min-width: 100px; text-align: center; font-weight: 700; color: var(--color-primary); background: #F8F9FA; }
+
+.student-name { color: var(--color-text-dark); font-weight: 500; font-size: 13px; }
+.student-actions { display: inline-flex; gap: 4px; margin-left: 10px; opacity: 0; transition: opacity 0.2s; }
+.journal-table tbody tr:hover .student-actions { opacity: 1; }
+
+.btn-edit, .btn-delete {
+    background: none; border: none; cursor: pointer;
+    padding: 4px 6px; border-radius: 3px; transition: all 0.2s;
+    font-size: 14px; color: var(--color-text);
+}
+.btn-edit:hover { background: var(--color-primary); color: var(--color-bg); }
+.btn-delete:hover { background: #000000; color: var(--color-bg); }
+
+.drag-handle { cursor: grab; color: var(--color-text); font-size: 16px; user-select: none; text-align: center; }
+.drag-handle:active { cursor: grabbing; }
+.drag-handle:hover { color: var(--color-primary); }
+
+/* === RESPONSIVE === */
+@media(max-width: 768px) {
+    .table-section { margin-bottom: 20px; }
+    #gradesTable, #lessonsTable { font-size: 12px; }
+    .lesson-date-cell { min-width: 40px; font-size: 10px; }
+    #lessonsTable .col-topic { min-width: 150px; }
+    #lessonsTable .col-task { min-width: 100px; }
+}
+
+/* === ДАТЫ НАД ОЦЕНКАМИ === */
+.lesson-dates-header th {
+    background: #F8F9FA !important;
+    color: var(--color-text) !important;
+    font-size: 11px;
+    font-weight: 500;
+    border-top: 1px solid var(--color-border) !important;
+    border-bottom: 2px solid var(--color-border) !important;
+    padding: 6px 4px !important;
+}
+
+.lesson-date-cell {
+    min-width: 50px;
+    text-align: center;
+    cursor: default;
+}
+
+/* Редактируемая дата */
+.editable-date {
+    cursor: pointer !important;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.editable-date:hover {
+    background: #E8F0FE !important;
+    color: var(--color-primary) !important;
+}
+
+.btn-delete-col {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+    border: none;
+    background: rgba(220, 53, 69, 0.12);
+    color: #dc3545;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    opacity: 0.35;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.lesson-date-header:hover .btn-delete-col {
+    opacity: 1;
+}
+
+.btn-delete-col:hover {
+    background: #dc3545;
+    color: #fff;
+}
+
+/* === КНОПКА ДОБАВЛЕНИЯ СТОЛБЦА (+) === */
+.col-add-lesson {
+    min-width: 44px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px !important;
+}
+
+.btn-add-col {
+    width: 28px;
+    height: 28px;
+    border: 2px dashed var(--color-primary, #1A5390);
+    background: transparent;
+    color: var(--color-primary, #1A5390);
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.btn-add-col:hover {
+    background: var(--color-primary, #1A5390);
+    color: #fff;
+    border-style: solid;
+}
+
+/* === ПАНЕЛЬ УПРАВЛЕНИЯ ПОЛЬЗОВАТЕЛЯМИ === */
+.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+#classSelect {
+    margin-right: 8px;
+}
+
+.subject-select:disabled {
+    background: #e9ecef;
+    color: #495057;
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+.assignment-row select {
+    min-width: 100px;
+}
+
+#usersPanel {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#usersTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#usersTable th,
+#usersTable td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+#usersTable th {
+    background: #f8f9fa;
+    font-weight: 600;
+    font-size: 13px;
+    color: #495057;
+}
+
+#usersTable tr:hover td {
+    background: #f8f9fa;
+}
+
+/* === ОЦЕНКИ (0-100) === */
+.grade-cell {
+    cursor: pointer;
+    min-width: 50px;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.grade-cell:hover {
+    background: #E8F0FE;
+}
+
+.grade-cell.has-grade {
+    color: var(--color-text-dark);
+}
+
+.grade-cell.empty {
+    color: #CCCCCC;
+}
+
+.grade-cell.editable:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+/* Средний балл */
+.col-average {
+    min-width: 80px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: #F8F9FA;
+    font-size: 13px;
+}
+
+/* Стили для строк с датами */
+.lesson-dates-row th {
+    background: #F8F9FA !important;
+    color: #666666 !important;
+    font-size: 11px;
+    font-weight: 500;
+    border-top: 1px solid #E0E0E0 !important;
+    border-bottom: 2px solid #1A5390 !important;
+    padding: 6px 4px !important;
+}
+
+.lesson-number-header {
+    min-width: 50px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.lesson-date-header {
+    min-width: 80px;
+    text-align: center;
+    cursor: default;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.editable-date {
+    cursor: pointer !important;
+}
+
+.editable-date:hover {
+    background: #E8F0FE !important;
+    color: #1A5390 !important;
+}
+
+.editable-date::after {
+    content: '📅';
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.editable-date:hover::after {
+    opacity: 1;
+}
