@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>neiroschool — формирующее оценивание и отчёты о прогрессе ребёнка</title>
+    <meta name="description" content="Платформа для педагогов и родителей: аналитические отчёты о прогрессе, понятные каждому">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        background: '#f8fafc', foreground: '#1e3a5f', primary: '#1e3a5f',
+                        'primary-foreground': '#ffffff', secondary: '#e0f2fe', accent: '#0ea5e9',
+                        good: '#22c55e', violet: '#8b5cf6', circle: '#bae6fd', muted: '#f1f5f9', 'muted-foreground': '#475569',
+                    },
+                    borderRadius: { 'xl': '1.25rem', '2xl': '1.5rem', '3xl': '2rem' },
+                    boxShadow: { 'soft': '0 20px 50px -24px rgba(30, 58, 95, 0.25)' },
+                    animation: { 'fade-in': 'fade-in 0.7s ease-out both', 'scale-in': 'scale-in 0.6s ease-out both' },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'scale-in': { '0%': { opacity: '0', transform: 'scale(0.92)' }, '100%': { opacity: '1', transform: 'scale(1)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #1e3a5f; -webkit-font-smoothing: antialiased; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .progress-bar { transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="font-sans overflow-x-hidden">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50">
+        <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-soft">N</div>
+                <span class="font-bold text-xl text-foreground tracking-tight"><a href="https://neiroschool.com/index.html" title="neiroschool">neiroschool</a></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#features" class="text-sm font-medium text-foreground/70 hover:text-primary transition-colors">Возможности</a>
+                <a href="#how-it-works" class="text-sm font-medium text-foreground/70 hover:text-primary transition-colors">Как это работает</a>
+                <a href="#demo" class="text-sm font-medium text-foreground/70 hover:text-primary transition-colors">Демо</a>
+            </div>
+            <a href="login.php" class="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-soft hover:-translate-y-0.5">Войти</a>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 relative overflow-hidden">
+        <div class="absolute top-20 left-[12%] w-72 h-72 bg-circle/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-[12%] w-96 h-96 bg-secondary rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-[1440px] mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="space-y-8 reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-semibold border border-gray-200/50">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-accent"></i> 14 дней бесплатного пробного периода
+                    </div>
+                    <h1 class="text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-foreground leading-[1.15] tracking-tight">
+                        Формирующее оценивание и <span class="text-accent">обратная связь</span> для роста ребёнка
+                    </h1>
+                    <p class="text-lg text-muted-foreground leading-relaxed max-w-lg">Платформа для педагогов и родителей: аналитические отчёты о прогрессе, понятные каждому. Меньше бюрократии, больше смысла.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="login.php" class="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-soft hover:-translate-y-1 flex items-center justify-center gap-2">
+                            Попробовать бесплатно <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#demo" class="bg-white hover:bg-muted text-foreground border border-gray-200/70 px-8 py-4 rounded-xl text-base font-semibold transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <i data-lucide="play-circle" class="w-5 h-5 text-accent"></i> Смотреть демо
+                        </a>
+                    </div>
+                </div>
+                <div class="relative reveal animate-scale-in" style="animation-delay: 0.2s;">
+                    <div class="absolute -inset-4 bg-gradient-to-br from-circle/40 to-secondary rounded-[32px] blur-2xl opacity-60"></div>
+                    <div class="relative bg-white rounded-[28px] shadow-soft border border-gray-200/50 p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-start justify-between mb-8">
+                            <div><h3 class="font-bold text-xl text-foreground">Маша К., 3 класс</h3><p class="text-sm text-muted-foreground mt-1">Динамика по навыкам · сентябрь–декабрь</p></div>
+                            <div class="bg-good/15 text-good px-3.5 py-1.5 rounded-full text-sm font-bold flex items-center gap-1.5 border border-good/20"><i data-lucide="trending-up" class="w-4 h-4"></i> +18%</div>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="group"><div class="flex justify-between mb-2"><span class="text-sm font-semibold text-foreground flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-accent"></i> Чтение</span><span class="text-sm font-bold text-foreground">82%</span></div><div class="w-full bg-muted rounded-full h-2.5 overflow-hidden"><div class="bg-accent h-2.5 rounded-full progress-bar" style="width: 0%" data-width="82%"></div></div></div>
+                            <div class="group"><div class="flex justify-between mb-2"><span class="text-sm font-semibold text-foreground flex items-center gap-2"><i data-lucide="calculator" class="w-4 h-4 text-violet"></i> Математика</span><span class="text-sm font-bold text-foreground">64%</span></div><div class="w-full bg-muted rounded-full h-2.5 overflow-hidden"><div class="bg-violet h-2.5 rounded-full progress-bar" style="width: 0%" data-width="64%"></div></div></div>
+                            <div class="group"><div class="flex justify-between mb-2"><span class="text-sm font-semibold text-foreground flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-good"></i> Работа в группе</span><span class="text-sm font-bold text-foreground">73%</span></div><div class="w-full bg-muted rounded-full h-2.5 overflow-hidden"><div class="bg-good h-2.5 rounded-full progress-bar" style="width: 0%" data-width="73%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-[1440px] mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-4 leading-tight">Одна платформа — два взгляда на прогресс</h2>
+                <p class="text-lg text-muted-foreground">Кому это нужно и зачем</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <div class="bg-background p-8 lg:p-10 rounded-[28px] border border-gray-200/50 hover:shadow-soft transition-all duration-300 hover:-translate-y-1 reveal">
+                    <div class="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center text-primary mb-6"><i data-lucide="graduation-cap" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Педагоги и школа</h3>
+                    <p class="text-lg font-semibold text-accent mb-6">Меньше бумаг — больше времени на детей</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3.5"><div class="w-5 h-5 rounded-full bg-good/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-good"></i></div><span class="text-muted-foreground leading-relaxed">Формирующее оценивание без лишней бумажной работы</span></li>
+                        <li class="flex items-start gap-3.5"><div class="w-5 h-5 rounded-full bg-good/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-good"></i></div><span class="text-muted-foreground leading-relaxed">Автоматизация сбора данных и формирования отчётов</span></li>
+                    </ul>
+                </div>
+                <div class="bg-background p-8 lg:p-10 rounded-[28px] border border-gray-200/50 hover:shadow-soft transition-all duration-300 hover:-translate-y-1 reveal" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 bg-good/15 rounded-2xl flex items-center justify-center text-good mb-6"><i data-lucide="heart-handshake" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-foreground mb-2">Родители</h3>
+                    <p class="text-lg font-semibold text-good mb-6">Видеть, как растёт ваш ребёнок</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3.5"><div class="w-5 h-5 rounded-full bg-good/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-good"></i></div><span class="text-muted-foreground leading-relaxed">Понятные отчёты о прогрессе ребёнка</span></li>
+                        <li class="flex items-start gap-3.5"><div class="w-5 h-5 rounded-full bg-good/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3 text-good"></i></div><span class="text-muted-foreground leading-relaxed">Развёрнутая обратная связь без сложных терминов</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 lg:py-28 bg-background">
+        <div class="max-w-3xl mx-auto px-6 text-center reveal">
+            <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-4 leading-tight">Начните формировать прогресс уже сегодня</h2>
+            <p class="text-lg text-muted-foreground mb-10">Получите доступ к демо-кабинету и шаблонам отчётов</p>
+            <a href="login.php" class="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl text-base font-semibold transition-all shadow-soft hover:-translate-y-1 inline-flex items-center gap-2">
+                Войти в систему <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+            <p class="text-xs text-muted-foreground flex items-center justify-center gap-1.5 mt-4">
+                <i data-lucide="shield" class="w-3.5 h-3.5"></i> Безопасный вход через Яндекс или логин/пароль
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-200/50 py-12">
+        <div class="max-w-[1440px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 bg-muted rounded-lg flex items-center justify-center text-muted-foreground font-bold text-sm">N</div>
+                <span class="font-bold text-lg text-foreground">neiroschool</span>
+            </div>
+            <p class="text-sm text-muted-foreground">© 2026 neiroschool. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    const bars = entry.target.querySelectorAll('.progress-bar');
+                    bars.forEach(bar => setTimeout(() => { bar.style.width = bar.getAttribute('data-width'); }, 300));
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        window.addEventListener('load', () => setTimeout(() => {
+            document.querySelectorAll('.progress-bar').forEach(bar => {
+                bar.style.width = '0%';
+                setTimeout(() => { bar.style.width = bar.getAttribute('data-width'); }, 100);
+            });
+        }, 500));
+    </script>
+</body>
+</html>

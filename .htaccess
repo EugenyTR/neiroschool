@@ -1,0 +1,88 @@
+# =====================================================================
+# NEIROSCHOOL .htaccess CONFIGURATION
+# =====================================================================
+
+# 1. Enable Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# 2. DEFAULT DOCUMENTS (Crucial: Loads index.html before index.php)
+DirectoryIndex index.html index.php
+
+# 3. FORCE HTTPS (Required for Yandex OAuth and Secure Cookies)
+# If the request is not HTTPS, redirect to the HTTPS version
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 4. SECURITY: Prevent Directory Listing
+Options -Indexes
+
+# 5. SECURITY: Block Access to Sensitive Files
+# Prevents direct browser access to configuration, database dumps, and environment files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|sql|log|ini|sh|bak|swp|old)$">
+    Require all denied
+</FilesMatch>
+
+<Files "config.php">
+    Require all denied
+</Files>
+
+<Files "seed.php">
+    Require all denied
+</Files>
+
+# 6. SECURITY: Prevent execution of PHP in uploads directory (if you add one later)
+# <Directory "/path/to/uploads">
+#     php_flag engine off
+# </Directory>
+
+# 7. SECURITY HEADERS (Protects against common web vulnerabilities)
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS filtering in older browsers
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Enforce HTTPS for 1 year (include subdomains)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy (Adjust if you load external scripts/images)
+    # Note: Tailwind CDN and Lucide icons are used, so script-src includes 'unsafe-inline' and cdns
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://oauth.yandex.ru https://login.yandex.ru;"
+</IfModule>
+
+# 8. PHP SETTINGS (Optional but recommended)
+<IfModule mod_php.c>
+    # Set default charset
+    php_value default_charset "UTF-8"
+    
+    # Increase upload limits (useful if you add report/avatar uploads later)
+    php_value upload_max_filesize 20M
+    php_value post_max_size 20M
+    
+    # Set session cookie parameters to match your PHP logic
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 1
+    php_value session.use_strict_mode 1
+</IfModule>
+
+# 9. CUSTOM ERROR PAGES (Optional: Create these files if you want custom error screens)
+# ErrorDocument 403 /403.html
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# 10. API ROUTING (If you want clean URLs for your API in the future)
+# Example: Redirect /api/journal/123 to /api/journal_data.php?id=123
+# RewriteRule ^api/journal/([0-9]+)$ api/journal_data.php?student_id=$1 [L,QSA]
